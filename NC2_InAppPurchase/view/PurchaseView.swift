@@ -21,21 +21,6 @@ struct PurchaseView: View {
             VStack {
                 proAccessView
                 featuresView
-                
-                Spacer()
-                
-//                ForEach(store.products) { product in
-//                    HStack {
-//                        Text(product.displayName)
-//                        Spacer()
-//                        Button("\(product.displayPrice)") {
-//                            Task {
-//                                try await store.purchase(product)
-//                            }
-//                        }
-//                    }
-//                }
-                
                 productsListView
                 purchaseButtonView
                 
@@ -45,18 +30,29 @@ struct PurchaseView: View {
                     }
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
+        }
+        // 뷰가 나타날 때 requestProducts를 호출하려 products를 가져오도록 함
+        .onAppear {
+            Task {
+                await store.requestProducts()
+                print("Products fetched: \(store.products)")
+            }
         }
     }
     
     private var proAccessView: some View {
         VStack(alignment: .center, spacing: 10) {
             Text("🐱")
+                .frame(width: 100, height: 100)
                 .font(.system(size: 100))
             
             Text("귀여운 고양이 사진 더 보고싶냥..?")
-                .font(.system(size: 33.0, weight: .bold))
+                .frame(height: 80)
+                .font(.system(size: 30, weight: .bold))
                 .fontDesign(.rounded)
                 .multilineTextAlignment(.center)
+                .padding(.horizontal)
             
             Text("고양이 사진을 구매하고 매일 힐링하세요.")
                 .font(.system(size: 17.0, weight: .semibold))
@@ -86,31 +82,20 @@ struct PurchaseView: View {
     }
     
     private var productsListView: some View {
-        List {
-            ForEach(store.products) { product in
-                HStack {
-                    Text(product.displayName)
-                    Spacer()
-                    Button("\(product.displayPrice)") {
-                        Task {
-                            try await store.purchase(product)
-                        }
-                    }
-                }
-            }
+        List(store.products, id: \.self) { product in
+            SubscriptionItemView(product: product, selectedProduct: $selectedProduct)
         }
         .scrollDisabled(true)
         .listStyle(.plain)
         .listRowSpacing(2.5)
-//        .frame(height: CGFloat(Store.products.count) * 90, alignment: .bottom)
+        .frame(height: CGFloat(store.products.count) * 90, alignment: .bottom)
     }
-    
     
     private var purchaseButtonView: some View {
         Button(action: {
             if let selectedProduct = selectedProduct {
                 Task {
-//                    await Store.purchase(selectedProduct)
+                    try await store.purchase(selectedProduct)
                 }
             } else {
                 print("Please select a product before purchasing.")
@@ -162,6 +147,7 @@ struct SubscriptionItemView: View {
         .listRowSeparator(.hidden)
     }
 }
+
 //#Preview {
 //    PurchaseView()
 //}

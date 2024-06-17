@@ -31,8 +31,9 @@ class Store: ObservableObject {
     func requestProducts() async {
         do {
             products = try await Product.products(for: productIDs)
+            print("Products successfully fetched: \(products)")
         } catch {
-            print(error)
+            print("Failed to fetch products: \(error)")
         }
     }
     
@@ -85,11 +86,11 @@ class Store: ObservableObject {
     
     private func addPurchased(_ product: Product) {
         switch product.type {
+        case .nonConsumable:
+            purchasedNonConsumables.insert(product)
         case .consumable:
             purchasedConsumables.append(product)
             Persistence.increaseConsumablesCount()
-        case .nonConsumable:
-            purchasedNonConsumables.insert(product)
         default:
             return
         }
