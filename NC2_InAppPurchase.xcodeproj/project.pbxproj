@@ -58,6 +58,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		798E96B82C20187E00144E68 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				798E96AB2C2004D700144E68 /* Store.swift */,
+				798E96B22C20090400144E68 /* Persistence.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		798E96B92C20189B00144E68 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8C1B8F582C1FBC2900C9E096 /* ContentView.swift */,
+				798E96AD2C2005E500144E68 /* PurchaseView.swift */,
+				798E96B02C2008C500144E68 /* ProductView.swift */,
+				798E96B62C20145A00144E68 /* SupportView.swift */,
+				798E96B42C20135800144E68 /* RefundView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		8C1B8F4A2C1FBC2900C9E096 = {
 			isa = PBXGroup;
 			children = (
@@ -81,13 +102,8 @@
 			children = (
 				798E96AF2C2006F600144E68 /* NC2-InAppPurchase-Info.plist */,
 				8C1B8F562C1FBC2900C9E096 /* NC2_InAppPurchaseApp.swift */,
-				798E96AB2C2004D700144E68 /* Store.swift */,
-				798E96B42C20135800144E68 /* RefundView.swift */,
-				798E96AD2C2005E500144E68 /* PurchaseView.swift */,
-				798E96B62C20145A00144E68 /* SupportView.swift */,
-				798E96B22C20090400144E68 /* Persistence.swift */,
-				798E96B02C2008C500144E68 /* ProductView.swift */,
-				8C1B8F582C1FBC2900C9E096 /* ContentView.swift */,
+				798E96B82C20187E00144E68 /* model */,
+				798E96B92C20189B00144E68 /* view */,
 				8C1B8F5C2C1FBC2A00C9E096 /* Assets.xcassets */,
 				8C1B8F612C1FBC2A00C9E096 /* NC2_InAppPurchase.entitlements */,
 				8C1B8F5E2C1FBC2A00C9E096 /* Preview Content */,

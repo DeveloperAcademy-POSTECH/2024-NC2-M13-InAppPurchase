@@ -14,10 +14,18 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             NavigationLink("Purchase", destination: PurchaseView())
+                .navigationTitle("Catcha")
+                .toolbar {
+                    NavigationLink{
+                        SupportView()
+                    } label: {
+                        Image(systemName: "info.circle")
+                    }
+                }
         }
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}
