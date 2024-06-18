@@ -19,11 +19,11 @@ struct PurchaseView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        if store.isSuccess {
-            // 평생구매시 뷰 변경 확인, 10장 더 보기는 nonConsumable로 변경할 필요 o
-            // 둘 다 nonConsumable구매이지만 서로 뷰의 변화가 달라야 함 -> HOW?
-            hasSubscriptionView
-        } else {
+//        if store.isSuccess {
+//            // 평생구매시 뷰 변경 확인, 10장 더 보기는 nonConsumable로 변경할 필요 o
+//            // 둘 다 nonConsumable구매이지만 서로 뷰의 변화가 달라야 함 -> HOW?
+//            hasSubscriptionView
+//        } else {
             NavigationStack {
                 
                 VStack {
@@ -55,24 +55,24 @@ struct PurchaseView: View {
                     print("Products fetched: \(store.products)")
                 }
             }
-        }
+//        }
     }
     
     // 구매 성공시 View가 변화하는 테스트용 View
-    private var hasSubscriptionView: some View {
-        VStack(spacing: 20) {
-            Image(systemName: "crown.fill")
-                .foregroundStyle(.yellow)
-                .font(Font.system(size: 100))
-            
-            Text("You've Unlocked Pro Access")
-                .font(.system(size: 30.0, weight: .bold))
-                .fontDesign(.rounded)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 30)
-        }
-        .ignoresSafeArea(.all)
-    }
+//    private var hasSubscriptionView: some View {
+//        VStack(spacing: 20) {
+//            Image(systemName: "crown.fill")
+//                .foregroundStyle(.yellow)
+//                .font(Font.system(size: 100))
+//            
+//            Text("You've Unlocked Pro Access")
+//                .font(.system(size: 30.0, weight: .bold))
+//                .fontDesign(.rounded)
+//                .multilineTextAlignment(.center)
+//                .padding(.horizontal, 30)
+//        }
+//        .ignoresSafeArea(.all)
+//    }
     
     private var proAccessView: some View {
         VStack(alignment: .center, spacing: 10) {
@@ -163,7 +163,7 @@ struct SubscriptionItemView: View {
                         .font(.system(size: 16.0, weight: .semibold, design: .rounded))
                         .multilineTextAlignment(.leading)
                     
-                    Text("Get full access for just \(product.displayPrice)")
+                    Text("단돈 \(product.displayPrice)에 마음의 평화를 ?!")
                         .font(.system(size: 14.0, weight: .regular, design: .rounded))
                         .multilineTextAlignment(.leading)
                 }

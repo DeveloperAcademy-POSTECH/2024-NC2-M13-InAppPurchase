@@ -18,18 +18,16 @@ struct GridView: View {
     @State private var showPurchaseView = false
     
     let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-    let pictures: [Picture] = (1...13).map { Picture(name: "Sample\($0)", mustPurchase: $0 > 3) }
+    let pictures: [Picture] = (1...20).map { Picture(name: "Sample\($0)", mustPurchase: $0 > 4) }
     
-    var mustPurchase = false
-    
-    // Pictures 인덱스가 3이상인 사진이라면 mustPurchase = true이고, mustPurchase = true이면 사진에 블러처리 + 사진을 탭했을 때 구매페이지로 이동
+
     // 평생구매시 mustPurchase = false로 바꾸면 됨, 근데 10장 구매일 경우는 어떻게 처리하지?
     
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
                 let width = geometry.size.width
-                let itemSize = (width - 6) / 3
+                let itemSize = (width - 10) / 3
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 3) {
@@ -41,7 +39,7 @@ struct GridView: View {
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: itemSize, height: itemSize)
-                                    .blur(radius: isPurchased ? 0 : 7)
+                                    .blur(radius: isPurchased ? 0 : 6)
                                     .clipped()
                                     .onTapGesture {
                                         if isPurchased {
@@ -50,18 +48,7 @@ struct GridView: View {
                                             showPurchaseView = true
                                         }
                                     }
-                                
                             }
-//                            NavigationLink(destination: PurchaseView()) {
-//                                ZStack {
-//                                    Rectangle()
-//                                        .opacity(0.1)
-//                                    Image(systemName: "cat")
-//                                        .foregroundStyle(.blue)
-//                                        .frame(width: itemSize, height: itemSize)
-//                                }
-//                            }
-                            
                         }
                     }
                     .padding(.horizontal, 3)
@@ -69,6 +56,7 @@ struct GridView: View {
             }
             .fullScreenCover(item: $selectedPicture) { picture in
                 ZStack {
+                    Color(red: 232 / 255, green: 228 / 255, blue: 210 / 255).ignoresSafeArea()
                     Image(picture.name)
                         .resizable()
                         .scaledToFit()
@@ -81,6 +69,8 @@ struct GridView: View {
                 PurchaseView()
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 232 / 255, green: 228 / 255, blue: 210 / 255))
     }
 }
 

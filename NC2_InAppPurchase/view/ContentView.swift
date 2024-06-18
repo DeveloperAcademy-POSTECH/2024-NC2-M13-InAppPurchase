@@ -14,13 +14,23 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             GridView()
-            
-                .navigationTitle("Catcha")
                 .toolbar {
-                    NavigationLink{
-                        SupportView()
-                    } label: {
-                        Image(systemName: "info.circle")
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        NavigationLink{
+                            SupportView()
+                        } label: {
+                            Image(systemName: "info.circle")
+                                .foregroundStyle(.gray)
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .principal) {
+                        Image("logo")
+                            .resizable()
+                            .frame(width: 100, height: 25)
+                            .padding(.horizontal, 10)
+                        
                     }
                 }
         }

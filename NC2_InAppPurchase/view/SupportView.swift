@@ -13,23 +13,25 @@ struct SupportView: View {
     @State var isOfferCodeRedepmtionPresented: Bool = false
     
     var body: some View {
-        NavigationStack {
-            Form {
-                Button("Subscription management") {
-                    showManageSubscriptionSheet()
+        ZStack {
+            NavigationStack {
+                Form {
+                    Button("Subscription management") {
+                        showManageSubscriptionSheet()
+                    }
+                    Button("Redeem code") {
+                        showOfferCodeRedemption()
+                    }
+                    NavigationLink("Request a refund") {
+                        RefundView()
+                    }
                 }
-                Button("Redeem code") {
-                    showOfferCodeRedemption()
-                }
-                NavigationLink("Request a refund") {
-                    RefundView()
-                }
+                .manageSubscriptionsSheet(isPresented: $isManageSubscriptionsSheetPresented)
+                .offerCodeRedemption(isPresented: $isOfferCodeRedepmtionPresented)
+                
             }
-            .manageSubscriptionsSheet(isPresented: $isManageSubscriptionsSheetPresented)
-            .offerCodeRedemption(isPresented: $isOfferCodeRedepmtionPresented)
-            
+            .navigationTitle("Support")
         }
-        .navigationTitle("Support")
     }
     
     func showManageSubscriptionSheet() {
