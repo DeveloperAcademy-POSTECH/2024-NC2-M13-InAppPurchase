@@ -17,29 +17,52 @@ struct PurchaseView: View {
     @State private var selectedProduct: Product? = nil
     
     var body: some View {
-        NavigationStack {
-            
-            VStack {
-                proAccessView
-                featuresView
-                productsListView
-                purchaseButtonView
+        if store.isSuccess {
+            // 구매 성공시 View가 변화하는 테스트용 View
+            // 평생구매시 뷰 변경 확인, 10장 더 보기는 nonConsumable로 변경할 필요 o
+            // 둘 다 nonConsumable구매이지만 서로 뷰의 변화가 달라야 함 -> HOW?
+            hasSubscriptionView
+        } else {
+            NavigationStack {
                 
-                Button("Restore purchases") {
-                    Task {
-                        try await AppStore.sync()
+                VStack {
+                    proAccessView
+                    featuresView
+                    productsListView
+                    purchaseButtonView
+                    
+                    Button("Restore purchases") {
+                        Task {
+                            try await AppStore.sync()
+                        }
                     }
                 }
+                .navigationBarTitleDisplayMode(.inline)
             }
-            .navigationBarTitleDisplayMode(.inline)
-        }
-        // 뷰가 나타날 때 requestProducts를 호출하려 products를 가져오도록 함
-        .onAppear {
-            Task {
-                await store.requestProducts()
-                print("Products fetched: \(store.products)")
+            // 뷰가 나타날 때 requestProducts를 호출하려 products를 가져오도록 함
+            .onAppear {
+                Task {
+                    await store.requestProducts()
+                    print("Products fetched: \(store.products)")
+                }
             }
         }
+    }
+    
+    // 구매 성공시 View가 변화하는 테스트용 View
+    private var hasSubscriptionView: some View {
+        VStack(spacing: 20) {
+            Image(systemName: "crown.fill")
+                .foregroundStyle(.yellow)
+                .font(Font.system(size: 100))
+            
+            Text("You've Unlocked Pro Access")
+                .font(.system(size: 30.0, weight: .bold))
+                .fontDesign(.rounded)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 30)
+        }
+        .ignoresSafeArea(.all)
     }
     
     private var proAccessView: some View {

@@ -18,6 +18,8 @@ class Store: ObservableObject {
     
     var transactionListener: Task<Void, Error>?
     
+    @Published var isSuccess = false
+    
     init() {
         transactionListener = listenForTransactions()
         
@@ -46,6 +48,7 @@ class Store: ObservableObject {
             switch result {
             case .success(let transacitonVerification):
                 await handle(transactionVerification: transacitonVerification)
+                
             case .pending:
                 // Transaction waiting on SCA (Strong Customer Authentication) or
                 // approval from Ask to Buy
@@ -76,6 +79,8 @@ class Store: ObservableObject {
         switch result {
         case let .verified(transaction):
             guard let product = self.products.first(where: { $0.id == transaction.productID}) else { return transaction }
+            // 거래가 확인됐을 경우 true
+            isSuccess = true
             
             guard !transaction.isUpgraded else { return transaction }
             self.addPurchased(product)
