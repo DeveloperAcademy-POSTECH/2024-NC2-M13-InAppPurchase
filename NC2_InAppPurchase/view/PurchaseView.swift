@@ -16,9 +16,10 @@ struct PurchaseView: View {
     
     @State private var selectedProduct: Product? = nil
     
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         if store.isSuccess {
-            // 구매 성공시 View가 변화하는 테스트용 View
             // 평생구매시 뷰 변경 확인, 10장 더 보기는 nonConsumable로 변경할 필요 o
             // 둘 다 nonConsumable구매이지만 서로 뷰의 변화가 달라야 함 -> HOW?
             hasSubscriptionView
@@ -26,6 +27,7 @@ struct PurchaseView: View {
             NavigationStack {
                 
                 VStack {
+                    
                     proAccessView
                     featuresView
                     productsListView
@@ -36,8 +38,15 @@ struct PurchaseView: View {
                             try await AppStore.sync()
                         }
                     }
+                    Spacer()
                 }
-                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("닫기")
+                    }
+                }
             }
             // 뷰가 나타날 때 requestProducts를 호출하려 products를 가져오도록 함
             .onAppear {
