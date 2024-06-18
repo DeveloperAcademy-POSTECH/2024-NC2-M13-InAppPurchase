@@ -16,10 +16,10 @@ class Store: ObservableObject {
     
     @Published var entitlements = [Transaction]()
     
-    var transacitonListener: Task<Void, Error>?
+    var transactionListener: Task<Void, Error>?
     
     init() {
-        transacitonListener = listenForTransactions()
+        transactionListener = listenForTransactions()
         
         Task {
             await requestProducts()
@@ -31,6 +31,7 @@ class Store: ObservableObject {
     func requestProducts() async {
         do {
             products = try await Product.products(for: productIDs)
+                .sorted(by: { $0.price > $1.price })
             print("Products successfully fetched: \(products)")
         } catch {
             print("Failed to fetch products: \(error)")
@@ -39,13 +40,25 @@ class Store: ObservableObject {
     
     @MainActor
     func purchase(_ product: Product) async throws {
-        let result = try await product.purchase()
-        
-        switch result {
-        case .success(let transacitonVerification):
-            await handle(transactionVerification: transacitonVerification)
-        default:
-            return
+        do {
+            let result = try await product.purchase()
+            
+            switch result {
+            case .success(let transacitonVerification):
+                await handle(transactionVerification: transacitonVerification)
+            case .pending:
+                // Transaction waiting on SCA (Strong Customer Authentication) or
+                // approval from Ask to Buy
+                break
+            case .userCancelled:
+                print("User cancelled!")
+                break
+            @unknown default:
+                print("Failed to purchase the product!")
+                break
+            }
+        } catch {
+            print("Failed to purchase the product!")
         }
     }
     

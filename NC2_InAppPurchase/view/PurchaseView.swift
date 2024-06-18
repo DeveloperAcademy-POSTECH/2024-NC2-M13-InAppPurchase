@@ -11,7 +11,8 @@ import StoreKit
 struct PurchaseView: View {
     @EnvironmentObject var store: Store
     @AppStorage(Persistence.consumablesCountKey) var consumableCount: Int = 0
-    private let features: [String] = ["10장 더보기 선택시 가려진 사진 10장을 더 볼 수 있습니다.", "평생보기 선택시 가려진 모든 사진을 볼 수 있고, 매주 업데이트 됩니다."]
+    private let features: [String] = ["10장 더보기 선택시 가려진 사진 10장을 더 볼 수 있습니다.",
+                                      "평생보기 선택시 가려진 모든 사진을 볼 수 있고, 매주 업데이트 됩니다."]
     
     @State private var selectedProduct: Product? = nil
     

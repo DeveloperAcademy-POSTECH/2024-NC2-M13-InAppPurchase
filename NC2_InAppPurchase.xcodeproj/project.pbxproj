@@ -15,6 +15,7 @@
 		798E96B52C20135800144E68 /* RefundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798E96B42C20135800144E68 /* RefundView.swift */; };
 		798E96B72C20145A00144E68 /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798E96B62C20145A00144E68 /* SupportView.swift */; };
 		798E96BB2C207BD200144E68 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798E96BA2C207BD100144E68 /* GridView.swift */; };
+		798E96BD2C21114C00144E68 /* EntitlementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798E96BC2C21114C00144E68 /* EntitlementManager.swift */; };
 		8C1B8F572C1FBC2900C9E096 /* NC2_InAppPurchaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B8F562C1FBC2900C9E096 /* NC2_InAppPurchaseApp.swift */; };
 		8C1B8F592C1FBC2900C9E096 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B8F582C1FBC2900C9E096 /* ContentView.swift */; };
 		8C1B8F5D2C1FBC2A00C9E096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1B8F5C2C1FBC2A00C9E096 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		798E96B42C20135800144E68 /* RefundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundView.swift; sourceTree = "<group>"; };
 		798E96B62C20145A00144E68 /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
 		798E96BA2C207BD100144E68 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		798E96BC2C21114C00144E68 /* EntitlementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementManager.swift; sourceTree = "<group>"; };
 		8C1B8F532C1FBC2900C9E096 /* NC2_InAppPurchase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NC2_InAppPurchase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C1B8F562C1FBC2900C9E096 /* NC2_InAppPurchaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NC2_InAppPurchaseApp.swift; sourceTree = "<group>"; };
 		8C1B8F582C1FBC2900C9E096 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			children = (
 				798E96AB2C2004D700144E68 /* Store.swift */,
 				798E96B22C20090400144E68 /* Persistence.swift */,
+				798E96BC2C21114C00144E68 /* EntitlementManager.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				798E96B12C2008C500144E68 /* ProductView.swift in Sources */,
 				798E96AC2C2004D800144E68 /* Store.swift in Sources */,
 				8C1B8F592C1FBC2900C9E096 /* ContentView.swift in Sources */,
+				798E96BD2C21114C00144E68 /* EntitlementManager.swift in Sources */,
 				798E96B32C20090400144E68 /* Persistence.swift in Sources */,
 				798E96B72C20145A00144E68 /* SupportView.swift in Sources */,
 				8C1B8F572C1FBC2900C9E096 /* NC2_InAppPurchaseApp.swift in Sources */,

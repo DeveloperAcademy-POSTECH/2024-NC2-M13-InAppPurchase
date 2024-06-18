@@ -16,32 +16,30 @@ struct GridView: View {
     @State private var selectedPicture: Picture? = nil
     
     let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-    let pictures = [
-        Picture(name: "Sample1"),
-        Picture(name: "Sample2"),
-        Picture(name: "Sample3"),
-        Picture(name: "Sample4"),
-        Picture(name: "Sample5"),
-        Picture(name: "Sample6"),
-        Picture(name: "Sample7"),
-        Picture(name: "Sample8"),
-        Picture(name: "Sample9")
-    ]
-    
+    let pictures: [Picture] = (1...13).map { Picture(name: "Sample\($0)") }
+
     var body: some View {
         NavigationStack {
-            ScrollView {
-                LazyVGrid(columns: columns) {
-                    ForEach(pictures) { picture in
-                        Image(picture.name)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 130, height: 130, alignment: .center)
-                            .clipped()
-                            .onTapGesture {
-                                selectedPicture = picture
+            GeometryReader { geometry in
+                let width = geometry.size.width
+                let itemSize = (width - 5) / 3
+                
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 3) {
+                        ForEach(pictures) { picture in
+                            if itemSize > 0 {
+                                Image(picture.name)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: itemSize, height: itemSize)
+                                    .clipped()
+                                    .onTapGesture {
+                                        selectedPicture = picture
+                                    }
                             }
+                        }
                     }
+                    .padding(.horizontal, 3)
                 }
             }
             .fullScreenCover(item: $selectedPicture) { picture in
@@ -56,6 +54,29 @@ struct GridView: View {
             }
         }
     }
+}
+
+// Assets에서 사진을 이름별로 더 쉽게 불러오기 위함
+func loadPictures(prefix: String) -> [Picture] {
+    let fileManager = FileManager.default
+    var pictures: [Picture] = []
+    
+    // Assuming all the images are stored in the main bundle
+    if let path = Bundle.main.resourcePath {
+        do {
+            let items = try fileManager.contentsOfDirectory(atPath: path)
+            for item in items {
+                if item.hasPrefix(prefix) {
+                    let pictureName = item.replacingOccurrences(of: ".png", with: "") // adjust based on the file extension
+                    pictures.append(Picture(name: pictureName))
+                }
+            }
+        } catch {
+            print("Error reading contents of directory: \(error.localizedDescription)")
+        }
+    }
+    
+    return pictures
 }
 
 //#Preview {
