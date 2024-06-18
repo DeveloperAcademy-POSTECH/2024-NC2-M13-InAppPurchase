@@ -17,26 +17,42 @@ struct GridView: View {
     
     let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     let pictures: [Picture] = (1...13).map { Picture(name: "Sample\($0)") }
-
+    
+    // Pictures 인덱스가 3이상인 사진이라면 mustPurchase = true이고, mustPurchase = true이면 사진에 블러처리 + 사진을 탭했을 때 구매페이지로 이동
+    // 평생구매시 mustPurchase = false로 바꾸면 됨, 근데 10장 구매일 경우는 어떻게 처리하지?
+    
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
                 let width = geometry.size.width
-                let itemSize = (width - 5) / 3
+                let itemSize = (width - 6) / 3
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 3) {
-                        ForEach(pictures) { picture in
-                            if itemSize > 0 {
+                        if itemSize > 0 {
+                            ForEach(pictures) { picture in
                                 Image(picture.name)
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: itemSize, height: itemSize)
+                                    .blur(radius: 7)
                                     .clipped()
                                     .onTapGesture {
                                         selectedPicture = picture
                                     }
+                                    
                             }
+                            NavigationLink(destination: PurchaseView()) {
+                                ZStack {
+                                    Rectangle()
+//                                        .background(.gray)
+                                        .opacity(0.1)
+                                    Image(systemName: "cat")
+                                        .foregroundStyle(.blue)
+                                        .frame(width: itemSize, height: itemSize)
+                                }
+                            }
+                            
                         }
                     }
                     .padding(.horizontal, 3)

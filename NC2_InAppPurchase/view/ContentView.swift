@@ -13,8 +13,8 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            NavigationLink("Purchase", destination: PurchaseView())
-            NavigationLink("Pictures", destination: GridView())
+            GridView()
+            
                 .navigationTitle("Catcha")
                 .toolbar {
                     NavigationLink{
