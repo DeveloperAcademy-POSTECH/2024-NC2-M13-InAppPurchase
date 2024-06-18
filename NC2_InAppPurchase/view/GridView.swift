@@ -7,39 +7,42 @@
 
 import SwiftUI
 
-struct Picture: Identifiable {
+class Picture: Identifiable, ObservableObject {
     let id = UUID()
     let name: String
-    var mustPurchase: Bool = false
+    @Published var mustPurchase: Bool
+    
+    init(name: String, mustPurchase: Bool) {
+        self.name = name
+        self.mustPurchase = mustPurchase
+    }
 }
 
 struct GridView: View {
     @State private var selectedPicture: Picture? = nil
     @State private var showPurchaseView = false
     
-    let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-    let pictures: [Picture] = (1...20).map { Picture(name: "Sample\($0)", mustPurchase: $0 > 4) }
+    @ObservedObject var store: Store  // Add Store as an ObservedObject
     
-
-    // 평생구매시 mustPurchase = false로 바꾸면 됨, 근데 10장 구매일 경우는 어떻게 처리하지?
+    let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
                 let width = geometry.size.width
-                let itemSize = (width - 10) / 3
+                let itemSize = (width - 6) / 3
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 3) {
                         if itemSize > 0 {
-                            ForEach(pictures) { picture in
-                                let isPurchased = !picture.mustPurchase || selectedPicture?.id == picture.id
+                            ForEach(store.pictures) { picture in
+                                let isPurchased = !picture.mustPurchase
                                 
                                 Image(picture.name)
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: itemSize, height: itemSize)
-                                    .blur(radius: isPurchased ? 0 : 6)
+                                    .blur(radius: isPurchased ? 0 : 7)
                                     .clipped()
                                     .onTapGesture {
                                         if isPurchased {
@@ -86,7 +89,7 @@ func loadPictures(prefix: String) -> [Picture] {
             for item in items {
                 if item.hasPrefix(prefix) {
                     let pictureName = item.replacingOccurrences(of: ".png", with: "") // adjust based on the file extension
-                    pictures.append(Picture(name: pictureName))
+                    pictures.append(Picture(name: pictureName, mustPurchase: false))
                 }
             }
         } catch {

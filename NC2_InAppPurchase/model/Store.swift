@@ -20,6 +20,8 @@ class Store: ObservableObject {
     
     @Published var isSuccess = false
     
+    @Published var pictures: [Picture] = (1...13).map { Picture(name: "Sample\($0)", mustPurchase: $0 > 4) }
+
     init() {
         transactionListener = listenForTransactions()
         
@@ -106,11 +108,18 @@ class Store: ObservableObject {
         switch product.type {
         case .nonConsumable:
             purchasedNonConsumables.insert(product)
+            unlockPictures()
         case .consumable:
             purchasedConsumables.append(product)
             Persistence.increaseConsumablesCount()
         default:
             return
+        }
+    }
+    
+    private func unlockPictures() {
+        for i in 4..<pictures.count {
+            pictures[i].mustPurchase = false
         }
     }
 }
