@@ -20,7 +20,7 @@ class Store: ObservableObject {
     
     @Published var isSuccess = false
     
-    @Published var pictures: [Picture] = (1...13).map { Picture(name: "Sample\($0)", mustPurchase: $0 > 4) }
+    @Published var pictures: [Picture] = (1...20).map { Picture(name: "Sample\($0)", mustPurchase: $0 > 4) }
 
     init() {
         transactionListener = listenForTransactions()
