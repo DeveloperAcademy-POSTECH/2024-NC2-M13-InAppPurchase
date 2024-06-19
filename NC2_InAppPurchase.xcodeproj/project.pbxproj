@@ -7,18 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		798E96A92C20037C00144E68 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 798E96A82C20037C00144E68 /* StoreKit.framework */; };
+		798E96AC2C2004D800144E68 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798E96AB2C2004D700144E68 /* Store.swift */; };
+		798E96AE2C2005E500144E68 /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798E96AD2C2005E500144E68 /* PurchaseView.swift */; };
+		798E96B12C2008C500144E68 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798E96B02C2008C500144E68 /* ProductView.swift */; };
+		798E96B32C20090400144E68 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798E96B22C20090400144E68 /* Persistence.swift */; };
+		798E96B52C20135800144E68 /* RefundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798E96B42C20135800144E68 /* RefundView.swift */; };
+		798E96B72C20145A00144E68 /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798E96B62C20145A00144E68 /* SupportView.swift */; };
+		798E96BB2C207BD200144E68 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798E96BA2C207BD100144E68 /* GridView.swift */; };
 		8C1B8F572C1FBC2900C9E096 /* NC2_InAppPurchaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B8F562C1FBC2900C9E096 /* NC2_InAppPurchaseApp.swift */; };
 		8C1B8F592C1FBC2900C9E096 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B8F582C1FBC2900C9E096 /* ContentView.swift */; };
-		8C1B8F5B2C1FBC2900C9E096 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B8F5A2C1FBC2900C9E096 /* Item.swift */; };
 		8C1B8F5D2C1FBC2A00C9E096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1B8F5C2C1FBC2A00C9E096 /* Assets.xcassets */; };
 		8C1B8F602C1FBC2A00C9E096 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1B8F5F2C1FBC2A00C9E096 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		798E96A82C20037C00144E68 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		798E96AA2C2003F700144E68 /* SyncedProducts.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = SyncedProducts.storekit; sourceTree = "<group>"; };
+		798E96AB2C2004D700144E68 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		798E96AD2C2005E500144E68 /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
+		798E96AF2C2006F600144E68 /* NC2-InAppPurchase-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NC2-InAppPurchase-Info.plist"; sourceTree = SOURCE_ROOT; };
+		798E96B02C2008C500144E68 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		798E96B22C20090400144E68 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		798E96B42C20135800144E68 /* RefundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundView.swift; sourceTree = "<group>"; };
+		798E96B62C20145A00144E68 /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
+		798E96BA2C207BD100144E68 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		8C1B8F532C1FBC2900C9E096 /* NC2_InAppPurchase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NC2_InAppPurchase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C1B8F562C1FBC2900C9E096 /* NC2_InAppPurchaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NC2_InAppPurchaseApp.swift; sourceTree = "<group>"; };
 		8C1B8F582C1FBC2900C9E096 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		8C1B8F5A2C1FBC2900C9E096 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		8C1B8F5C2C1FBC2A00C9E096 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C1B8F5F2C1FBC2A00C9E096 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8C1B8F612C1FBC2A00C9E096 /* NC2_InAppPurchase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NC2_InAppPurchase.entitlements; sourceTree = "<group>"; };
@@ -29,17 +45,50 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				798E96A92C20037C00144E68 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		798E96A72C20037C00144E68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				798E96A82C20037C00144E68 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		798E96B82C20187E00144E68 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				798E96AB2C2004D700144E68 /* Store.swift */,
+				798E96B22C20090400144E68 /* Persistence.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		798E96B92C20189B00144E68 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8C1B8F582C1FBC2900C9E096 /* ContentView.swift */,
+				798E96AD2C2005E500144E68 /* PurchaseView.swift */,
+				798E96BA2C207BD100144E68 /* GridView.swift */,
+				798E96B02C2008C500144E68 /* ProductView.swift */,
+				798E96B62C20145A00144E68 /* SupportView.swift */,
+				798E96B42C20135800144E68 /* RefundView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		8C1B8F4A2C1FBC2900C9E096 = {
 			isa = PBXGroup;
 			children = (
+				798E96AA2C2003F700144E68 /* SyncedProducts.storekit */,
 				8C1B8F552C1FBC2900C9E096 /* NC2_InAppPurchase */,
 				8C1B8F542C1FBC2900C9E096 /* Products */,
+				798E96A72C20037C00144E68 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,9 +103,10 @@
 		8C1B8F552C1FBC2900C9E096 /* NC2_InAppPurchase */ = {
 			isa = PBXGroup;
 			children = (
+				798E96AF2C2006F600144E68 /* NC2-InAppPurchase-Info.plist */,
 				8C1B8F562C1FBC2900C9E096 /* NC2_InAppPurchaseApp.swift */,
-				8C1B8F582C1FBC2900C9E096 /* ContentView.swift */,
-				8C1B8F5A2C1FBC2900C9E096 /* Item.swift */,
+				798E96B82C20187E00144E68 /* model */,
+				798E96B92C20189B00144E68 /* view */,
 				8C1B8F5C2C1FBC2A00C9E096 /* Assets.xcassets */,
 				8C1B8F612C1FBC2A00C9E096 /* NC2_InAppPurchase.entitlements */,
 				8C1B8F5E2C1FBC2A00C9E096 /* Preview Content */,
@@ -142,9 +192,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				798E96B12C2008C500144E68 /* ProductView.swift in Sources */,
+				798E96AC2C2004D800144E68 /* Store.swift in Sources */,
 				8C1B8F592C1FBC2900C9E096 /* ContentView.swift in Sources */,
-				8C1B8F5B2C1FBC2900C9E096 /* Item.swift in Sources */,
+				798E96B32C20090400144E68 /* Persistence.swift in Sources */,
+				798E96B72C20145A00144E68 /* SupportView.swift in Sources */,
 				8C1B8F572C1FBC2900C9E096 /* NC2_InAppPurchaseApp.swift in Sources */,
+				798E96AE2C2005E500144E68 /* PurchaseView.swift in Sources */,
+				798E96BB2C207BD200144E68 /* GridView.swift in Sources */,
+				798E96B52C20135800144E68 /* RefundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,10 +335,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NC2_InAppPurchase/Preview Content\"";
-				DEVELOPMENT_TEAM = 5C6W5SYCQQ;
+				DEVELOPMENT_TEAM = MXGCKXDXUM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "NC2-InAppPurchase-Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -290,10 +347,13 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.InnerPeace.NC2-InAppPurchase";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Feather.NC2-InAppPurchase";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -307,10 +367,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NC2_InAppPurchase/Preview Content\"";
-				DEVELOPMENT_TEAM = 5C6W5SYCQQ;
+				DEVELOPMENT_TEAM = MXGCKXDXUM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "NC2-InAppPurchase-Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -318,10 +379,13 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.InnerPeace.NC2-InAppPurchase";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Feather.NC2-InAppPurchase";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
