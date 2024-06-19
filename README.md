@@ -1,4 +1,7 @@
 # 2024-NC2-M13-In-App Purchase
+<img width="1000" alt="Ideation" src="https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M13-InAppPurchase/blob/main/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202024-06-19%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2010.34.04.png?raw=true">
+
+
 ## 🎥 Youtube Link
 (추후 만들어진 유튜브 링크 추가)
 
@@ -21,7 +24,7 @@
 🐱 귀여운 고양이 사진을 인앱구매를 통해 사용자가 소장할 수 있도록 하자!
 
 ## 🖼️ Prototype
-<img width="800" alt="Ideation" src="https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M13-InAppPurchase/blob/main/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202024-06-19%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%209.23.38.png?raw=true">
+<img width="1000" alt="Ideation" src="https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M13-InAppPurchase/blob/main/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202024-06-19%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%209.23.38.png?raw=true">
 
 ## 🛠️ About Code
 ```swift
