@@ -20,8 +20,136 @@
 ## 💼 Use Case
 🐱 귀여운 고양이 사진을 인앱구매를 통해 사용자가 소장할 수 있도록 하자!
 
-
 ## 🖼️ Prototype
+<img width="800" alt="Ideation" src="https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M13-InAppPurchase/blob/main/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202024-06-19%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%209.23.38.png?raw=true">
 
 ## 🛠️ About Code
-(핵심 코드에 대한 설명 추가)
+```swift
+import SwiftUI
+import StoreKit
+
+@MainActor
+class SubscriptionsManager: NSObject, ObservableObject {
+    /// 구매 가능한 제품 ID의 배열
+    let productIDs: [String] = ["addPhotos", "allPhotos"]
+    /// 사용자가 구매한 제품 ID를 저장하는 집합
+    var purchasedProductIDs: Set<String> = []
+    /// 사용자가 구매할 수 있는 제품 목록을 저장하는 배열
+    @Published var products: [Product] = []
+    
+    @Published var photoCount = 2
+    
+    /// 트랜잭션 업데이트를 관찰
+    private var updates: Task<Void, Never>? = nil
+    
+    override init() {
+        super.init()
+        self.updates = observeTransactionUpdates()
+        SKPaymentQueue.default().add(self)
+    }
+    
+    deinit {
+        updates?.cancel()
+    }
+    
+    func observeTransactionUpdates() -> Task<Void, Never> {
+        Task(priority: .background) { [unowned self] in
+            for await _ in Transaction.updates {
+                await self.updatePurchasedProducts()
+            }
+        }
+    }
+}
+
+// MARK: StoreKit2 API
+extension SubscriptionsManager {
+
+    /// 앱스토어 커넥트에 있는 Products 가져오는 메서드
+    func loadProducts() async {
+        do {
+            let allProducts = try await Product.products(for: productIDs)
+            self.products = allProducts
+                .filter { !isProductPurchased($0.id) }
+                .sorted(by: { $0.price > $1.price })
+        } catch {
+            print("Failed to fetch products!")
+        }
+    }
+    
+    private func isProductPurchased(_ productID: String) -> Bool {
+        if productID == "addPhotos" {
+            return UserDefaults.standard.tenPhotosAccess
+        } else if productID == "allPhotos" {
+            return UserDefaults.standard.allPhotosAccess
+        }
+        return false
+    }
+    
+    /// Products 를 구매하는 메서드
+    func buyProduct(_ product: Product) async {
+        do {
+            let result = try await product.purchase()
+            
+            switch result {
+            case let .success(.verified(transaction)):
+                // 성공적으로 구매된 트랜잭션
+                await transaction.finish()
+                await self.updatePurchasedProducts()
+
+            case let .success(.unverified(_, error)):
+                // 구매는 성공했지만 트랜잭션이나 영수증을 검증할 수 없는 경우
+                print("Unverified purchase. Might be jailbroken. Error: \(error)")
+                break
+            case .pending:
+                // 구매가 대기 상태인 경우
+                break
+            case .userCancelled:
+                print("User cancelled!")
+                break
+            @unknown default:
+                print("Failed to purchase the product!")
+                break
+            }
+        } catch {
+            print("Failed to purchase the product!")
+        }
+    }
+    
+    /// 현재 유효한 트랜잭션을 확인하고, 이를 기반으로 사용자가 구매한 제품 목록을 업데이트
+    func updatePurchasedProducts() async {
+        // Transaction.currentEntitlements: 사용자의 현재 유효한 구매 내역
+        for await result in Transaction.currentEntitlements {
+            guard case .verified(let transaction) = result else {
+                continue
+            }
+            // 트랜잭션이 취소되지 않음
+            if transaction.revocationDate == nil {
+                self.purchasedProductIDs.insert(transaction.productID)
+            }
+            // 트랜잭션이 취소됨
+            else {
+                self.purchasedProductIDs.remove(transaction.productID)
+            }
+        }
+    }
+    
+    /// 구매내역 복원
+    func restorePurchases() async {
+        do {
+            try await AppStore.sync()
+        } catch {
+            print(error)
+        }
+    }
+}
+
+extension SubscriptionsManager: SKPaymentTransactionObserver {
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
+        return true
+    }
+}
+```
