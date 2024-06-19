@@ -1,4 +1,4 @@
-# 2024-NC2-M13-In-App Purchase
+# 💲 2024-NC2-M13-In-App Purchase
 <img width="1000" alt="Ideation" src="https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M13-InAppPurchase/blob/main/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202024-06-19%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2010.34.04.png?raw=true">
 
 
@@ -18,10 +18,10 @@
 1. 4가지 결제유형 중 비소진형 아이템 유형을 선택해서 구현해본다.
     - 4가지 결제유형을 구현하는 방식은 비슷하므로, 우리의 Use Case에 제일 적합한 방식인 비소모성 구매에 집중했습니다.
 2. 인앱결제 프로세스를 완벽히 이해한다.
-    - 인앱결제 API는 커스텀할 수 있는 부분이 적고 이미 완성된 상태였기 때문에, 단순한 구현보다는 이론적인 이해에 초점을 맞췄다.
+    - 인앱결제 API는 커스텀할 수 있는 부분이 적고 이미 완성된 상태였기 때문에, 단순한 구현보다는 이론적인 이해에 초점을 맞췄습니다.
 
 ## 💼 Use Case
-🐱 귀여운 고양이 사진을 인앱구매를 통해 사용자가 소장할 수 있도록 하자!
+🐱 **귀여운 고양이 사진을 인앱구매를 통해 사용자가 소장할 수 있도록 하자!**
 
 ## 🖼️ Prototype
 <img width="1000" alt="Ideation" src="https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M13-InAppPurchase/blob/main/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202024-06-19%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%209.23.38.png?raw=true">
